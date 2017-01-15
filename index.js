@@ -1,10 +1,11 @@
 /* eslint-env node */
 'use strict'
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const responser = require('./response/responser.js')
-const app = express()
+const express = require('express');
+const bodyParser = require('body-parser');
+const Responser = require('./response/responser.js');
+const responser = new Responser();
+const app = express();
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -34,7 +35,7 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
-            console.log('Text received: ' + text);
+            console.log('Message received:', text);
             responser.respond(sender, text);
         }
     }
