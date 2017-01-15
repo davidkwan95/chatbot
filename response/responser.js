@@ -1,7 +1,20 @@
+'use strict'
+
 const PAGE_ACCESS_TOKEN = "EAAJHHZBCyREsBAInGqYU3YAxPGltYvf7P3JLCEEWJlTxnDBerHTrmMG7hFKJBm5zi3wfWl9ertdmnfq19HOJUmDUTGueiV6pcu4ZBiPWps4yr58Irbou6Oju0iA3ypT75ztXvl6iRB0JtzxNljuKmXwwp6IqYShTy5gggIuQZDZD"
 const request = require('request')
 
 var exports = module.exports = {};
+
+exports.respond = function(sender, text) {
+    var response = "";
+    if (text === "❤") {
+        response = "❤";
+    } else {
+        response = "Hello";
+    }
+    this.sendTextMessage(sender, response);
+}
+
 exports.sendTextMessage = function(sender, text) {
     let messageData = { text:text }
     request({

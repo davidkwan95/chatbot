@@ -34,8 +34,8 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
-            console.log(text);
-            responser.sendTextMessage(sender, "For now, I will always response with Hello")
+            console.log('Text received: ' + text);
+            responser.respond(sender, text);
         }
     }
     res.sendStatus(200)
