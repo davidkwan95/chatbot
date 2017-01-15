@@ -4,7 +4,7 @@ var exports = module.exports = {}
 
 // List of keywords
 const NORMAL_GREETINGS_KEYWORDS = [
-    "hi", "hello", "greetings"
+    "hi", "hello", "hey", "greetings"
 ];
 
 // List of response
