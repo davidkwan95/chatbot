@@ -4,6 +4,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
+const responser = require('./response/responser.js')
 const app = express()
 
 app.set('port', (process.env.PORT || 5000))
@@ -34,13 +35,13 @@ app.post('/webhook/', function (req, res) {
         let sender = event.sender.id
         if (event.message && event.message.text) {
             let text = event.message.text
-            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+            responser.sendTextMessage(sender, "For now, I will always response with Hello")
         }
     }
     res.sendStatus(200)
 })
 
-const token = "<PAGE_ACCESS_TOKEN>"
+const PAGE_ACCESS_TOKEN = "EAAJHHZBCyREsBAInGqYU3YAxPGltYvf7P3JLCEEWJlTxnDBerHTrmMG7hFKJBm5zi3wfWl9ertdmnfq19HOJUmDUTGueiV6pcu4ZBiPWps4yr58Irbou6Oju0iA3ypT75ztXvl6iRB0JtzxNljuKmXwwp6IqYShTy5gggIuQZDZD"
 
 // Spin up the server
 app.listen(app.get('port'), function() {
