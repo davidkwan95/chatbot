@@ -1,11 +1,17 @@
 /* eslint-env node */
 'use strict'
 
+const dotenv = require('dotenv');
 const express = require('express');
 const bodyParser = require('body-parser');
+
+const config = require('./config');
 const Responser = require('./response/responser.js');
-const responser = new Responser();
+
 const app = express();
+const responser = new Responser();
+
+dotenv.load();
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -22,7 +28,7 @@ app.get('/', function (req, res) {
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
-    if (req.query['hub.verify_token'] === 'my-waifu-is-calling') {
+    if (req.query['hub.verify_token'] === config.FACEBOOK_VERIFY_TOKEN) {
         res.send(req.query['hub.challenge'])
     }
     res.send('Error, wrong token')

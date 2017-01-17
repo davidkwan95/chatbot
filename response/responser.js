@@ -1,7 +1,7 @@
 'use strict'
 
-const PAGE_ACCESS_TOKEN = "EAAJHHZBCyREsBAInGqYU3YAxPGltYvf7P3JLCEEWJlTxnDBerHTrmMG7hFKJBm5zi3wfWl9ertdmnfq19HOJUmDUTGueiV6pcu4ZBiPWps4yr58Irbou6Oju0iA3ypT75ztXvl6iRB0JtzxNljuKmXwwp6IqYShTy5gggIuQZDZD";
 const request = require('request');
+const config = require('../config');
 const combiner = require('./combiner');
 
 var randomize = function(items) {
@@ -9,15 +9,13 @@ var randomize = function(items) {
 }
 
 class Responser {
-    constructor() {
-        
-    }
+    constructor() {}
     
     sendTextMessage(sender, text) {
         let messageData = { text:text }
         request({
             url: 'https://graph.facebook.com/v2.6/me/messages',
-            qs: {access_token: PAGE_ACCESS_TOKEN},
+            qs: {access_token: config.PAGE_ACCESS_TOKEN},
             method: 'POST',
             json: {
                 recipient: {id:sender},
