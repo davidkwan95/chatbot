@@ -30,15 +30,21 @@ class Responser {
         })
     }
     
-    respond(sender, text) {
-        text = text.toLowerCase();
+    getResponse(text) {
+        var lowerCasedText = text.toLowerCase();
         let response = "";
-        if (text === "❤") { // return love
+        if (lowerCasedText === "❤") { // return love
             response = "❤";
         }
         if (!response) {
-            response = randomize(combiner.getResponses(text));
+            response = randomize(combiner.getResponses(lowerCasedText));
         }
+        return response;
+    }
+    
+    // Get response and send message
+    respond(sender, text) {
+        var response = this.getResponse(text);
         this.sendTextMessage(sender, response);
     }
 }

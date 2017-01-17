@@ -1,20 +1,20 @@
-// This file is used to combine all collections and get responses
+// This file is used to combine all contexts checking and get appropriate responses
 
 'use strict'
 
-var dontUnderstand = require('./collections/dont-understand');
-var greetings = require('./collections/greetings');
+var dontUnderstand = require('./contexts/dont-understand');
+var greetings = require('./contexts/greetings');
 
 
 // will return
-const COLLECTIONS_TO_BE_CHECKED = [
+const CONTEXTS_TO_BE_CHECKED = [
     greetings,
 ]
 
 var getResponses = function(text) {
     let responses = null;
-    for (var i = 0; !responses && i < COLLECTIONS_TO_BE_CHECKED.length; i++) {
-        responses = COLLECTIONS_TO_BE_CHECKED[i].check(text);
+    for (var i = 0; !responses && i < CONTEXTS_TO_BE_CHECKED.length; i++) {
+        responses = CONTEXTS_TO_BE_CHECKED[i].check(text);
     }
     if (!responses) {
         responses = dontUnderstand.DONT_UNDERSTAND_RESPONSES;
