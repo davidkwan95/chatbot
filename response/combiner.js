@@ -6,7 +6,9 @@ var dontUnderstand = require('./contexts/dont-understand');
 var greetings = require('./contexts/greetings');
 
 
-// will return
+// will return responses. checked from top to bottom (have prioritization).
+// for now will only get responses from one context.
+// TODO: multiple contexts sentence
 const CONTEXTS_TO_BE_CHECKED = [
     greetings,
 ]

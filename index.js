@@ -1,7 +1,10 @@
 /* eslint-env node */
 'use strict'
 
+// Set environment variables at the start of the program
 const dotenv = require('dotenv');
+dotenv.load();
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -10,8 +13,6 @@ const Responser = require('./response/responser.js');
 
 const app = express();
 const responser = new Responser();
-
-dotenv.load();
 
 app.set('port', (process.env.PORT || 5000))
 
